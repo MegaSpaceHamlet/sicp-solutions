@@ -1,0 +1,18 @@
+The reason that Louis' version takes longer is because for any number n, the program must execute n steps.
+It needs to execute N steps because the procedure that he is using to exponentiate his base does it step 
+by step. base * base * base ... (n times). The program to find primary numbers is reaching very high into
+the integer stratosphere, and thus, n steps can be a LOT of steps. 
+On the contrary, when computing exponents using the squaring strategy, which we have proven to take only 
+(log n) steps, means that each exponentiation procedure will only take LOGn times, which is a significantly
+smaller number. For example, to exponentiate 3 by 60, will take only 60log2 times, whereas with the Louis'
+method, it will take 60 steps. Now imagine dealing with numbers in the millions, billions, trillions, and 
+beyond. You're talking about a difference between 1,000,000,000,000log2 ~ 30 vs 1 billion steps. 
+These are the numbers that we are testing for primality. Very high numbers. Remember, 30 to a billion.
+
+Not only that, but also in regards to Space, the original exponentiation procedure generates linear recursion. 
+One line of processes grow N amount of times, and only then does it return. On the other hand, the fast-exp
+procedure generates a tree recursive process, in which the largest branch is only ever Logn times. So the process 
+also takes up less space. 
+
+In summation, the fast-exp procedure takes up significantly less time and space than the regular exponentiation 
+procedure.
