@@ -1,0 +1,8 @@
+Pascal's Triangle 
+
+https://www.mathwords.com/b/binomial_coefficients_pascal.htm
+
+The formula to retrieve elements found in Pascal's Triangle are computed using the binomial theorem. 
+
+After figuring that out, the programmer's challenge is to define a recursive procedure to compute the elements. 
+
