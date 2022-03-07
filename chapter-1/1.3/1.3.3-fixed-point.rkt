@@ -1,4 +1,5 @@
 #lang sicp
+(#%provide fixed-point)
 (define (abs x)
   (if (< x 0)
       (* x -1)
@@ -17,7 +18,6 @@
           next
           (try next))))
   (try first-guess))
-
 (define (sqrt x)
   (fixed-point (lambda (y) (average y (/ x y)))
                1.0))
