@@ -1,4 +1,5 @@
 #lang sicp
+(#%provide accumulate inc)
 (define (identity x) x)
 
 (define (inc n) (+ n 1))
