@@ -8,7 +8,7 @@
   (let ((tolerance 0.00001))
     (< (abs (- a b)) tolerance)))
         
-
+; cont-frac recursive
 (define (cont-frac n d k)
   (define (do-cont-frac i n d k)
   (if (> i k)
