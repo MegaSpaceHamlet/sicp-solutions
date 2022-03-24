@@ -13,7 +13,7 @@
   (define (do-cont-frac i n d k)
   (if (> i k)
       (/ (n i) (d i))
-      (+ (d i) (/ (n i) (do-cont-frac (+ i 1) n d k)))))
+      (/ (n i) (+ (d i) (do-cont-frac (+ i 1) n d k)))))
   (do-cont-frac 0 n d k))
 
 
