@@ -21,5 +21,5 @@
 
 (define (square x) (* x x))
 
-(#%provide newton-transform)
+(#%provide newton-transform newtons-method)
 
