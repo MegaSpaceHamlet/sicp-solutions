@@ -1,0 +1,33 @@
+#lang sicp
+(#%require "../../functions.rkt")
+
+(define (iter-improve good-enough? improve)
+  (define (test guess)
+   (if (good-enough? guess)
+        guess
+       (test (improve guess))))
+   (lambda (x) (test x)))
+
+; 1.1.7
+(define (sqrt x)
+    ((iter-improve
+     (lambda (guess)
+       (< (abs (- (square guess) x)) 0.001))
+     (lambda (guess)
+       (average guess (/ x guess))))
+    1.0))
+
+; 1.3
+(define (fixed-point f x)
+  ((iter-improve
+    (lambda (y)
+      (< (abs (- y x)) 0.0001))
+    (lambda (y)
+      (f y)))
+   1.0))
+
+
+
+(sqrt 4)
+(fixed-point cos 1.0)
+

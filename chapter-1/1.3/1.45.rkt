@@ -4,41 +4,18 @@
 (#%require "1.3.4-procedures-as-returned-values.rkt") ; average-damp
 (#%require "1.43.rkt") ; repeated
 
-(define (fourth-root x)
-  (fixed-point ((repeated average-damp 2)
-                (lambda (y) (/ x (expt y 3))))
-                1.0))
-
 ; Need to test the requirements for damping
 ; Although there are unresolved edge cases, e.g. (to get the root of 128, 5 average damps are enough)
-; it seems to be what number of a multiple it is of 2.
+; it seems to be what number in a list of exponential products of 2 it is.
 ; I'm forgetting the mathematical term, but the authors said we can assume any mathematical operation
 ; is available as a primitive.
+; ** Log **
+; The logarithm base 2 fucntion
+; The logarithm function returns how many steps it takes to get to the number n
+; from base k (by default 10 -- the 'natural logarithm'). Here, it is the log
+; of n base 2 that returns the required amount of 'damps' that are necessary
+; for the fixed-point function to converge.
 (define (nth-root x n)
-  (let ((damp (steps-to-two n)))
-    (fixed-point ((repeated average-damp damp)
+    (fixed-point ((repeated average-damp (round (log n 2)))
                   (lambda (y) (/ x (expt y (- n 1)))))
-                   1.0)))
-
-(define (test x n damp)
-  (let ((x (expt x n)))
-  (fixed-point ((repeated average-damp damp)
-                (lambda (y) (/ x (expt y (- n 1)))))
-               1.0)))
-
-(define (my-test base power damp)
-  (define (step i)
-    (display i)
-    (display ": ")
-    (display (test base i damp))
-    (newline)
-    (step (+ i 1)))
-  (step power))
-
-(define (steps-to-two x)
-    (define (step x i)
-      (if (= x 2)
-          i
-          (step (/ x 2) (+ i 1))))
-      (step x 1))
-          
+                   1.0))
