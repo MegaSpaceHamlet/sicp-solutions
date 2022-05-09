@@ -21,7 +21,7 @@
 (define (fixed-point f x)
   ((iter-improve
     (lambda (y)
-      (< (abs (- y x)) 0.0001))
+      (< (abs (- y (f y))) 0.00001))
     (lambda (y)
       (f y)))
    1.0))
