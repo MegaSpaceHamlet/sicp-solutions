@@ -18,7 +18,7 @@
     1.0))
 
 ; 1.3
-(define (fixed-point f x)
+(define (fixed-point f)
   ((iter-improve
     (lambda (y)
       (< (abs (- y (f y))) 0.00001))
@@ -29,5 +29,5 @@
 
 
 (sqrt 4)
-(fixed-point cos 1.0)
+(fixed-point cos)
 
