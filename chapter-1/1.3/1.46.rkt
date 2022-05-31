@@ -1,6 +1,7 @@
 #lang sicp
 (#%require "../../functions.rkt")
-
+(#%provide iter-improve)
+		
 (define (iter-improve good-enough? improve)
   (define (test guess)
    (if (good-enough? guess)
@@ -25,9 +26,3 @@
     (lambda (y)
       (f y)))
    1.0))
-
-
-
-(sqrt 4)
-(fixed-point cos)
-
