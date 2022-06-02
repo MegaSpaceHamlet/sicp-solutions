@@ -23,4 +23,10 @@
   (if (<= n 1)
       1
       (* n (fact-rec (- n 1)))))
-
+; From exercise 1.46
+(define (iter-improve good-enough? improve)
+  (define (test guess)
+   (if (good-enough? guess)
+        guess
+       (test (improve guess))))
+   (lambda (x) (test x)))
