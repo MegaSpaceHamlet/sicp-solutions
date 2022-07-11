@@ -1,6 +1,7 @@
 #lang sicp
 (#%provide (all-defined))
 (#%provide (all-from "2.7.rkt"))
+(#%provide (all-from "../../functions.rkt"))
 (#%require "../../functions.rkt")
 (#%require "2.7.rkt")
 
@@ -27,3 +28,6 @@
   (display (/ (round (* (+ dx (lower-bound i)) 100)) 100))
   (display " ± ")
   (display (/ (round (* (+ dx (upper-bound i)) 100)) 100)))
+
+(define a (make-interval 3.08 3.12))
+(define b (make-interval 4.6 5.2))

@@ -30,3 +30,9 @@
         guess
        (test (improve guess))))
    (lambda (x) (test x)))
+
+(define (to-fixed d n)
+  (if (= n 0)
+      (error "n must be greater than 0"))
+  (let ((rounder (expt 10 n)))
+  (/ (round (+ dx (* d rounder))) rounder)))
