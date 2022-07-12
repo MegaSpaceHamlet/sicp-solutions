@@ -29,5 +29,6 @@
   (display " ± ")
   (display (/ (round (* (+ dx (upper-bound i)) 100)) 100)))
 
+; Some test intervals
 (define a (make-interval 3.08 3.12))
 (define b (make-interval 4.6 5.2))

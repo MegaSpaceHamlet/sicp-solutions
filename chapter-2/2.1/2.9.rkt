@@ -10,6 +10,28 @@
 ;; the answer does not come out to be the same
 ;; for equal widths. Thus, we cannot conclude that
 ;; the function is operating on 2 widths.
+;; According to that, the procudure would look
+;; like this:
+(define (add-width a b)
+  (/ (- (+ (upper-bound a) (upper-bound b))
+        (+ (lower-bound a) (lower-bound b)))
+     2))
+(define (mul-width a b)
+  (/ (- (* (upper-bound a) (upper-bound b))
+        (* (lower-bound a) (lower-bound b)))
+     2))
+(define ng-five (make-interval -5 5))
+(define sm (make-interval 0 2))
+;; add-width = 6
+;; mul-width = 5
+(define other-five (make-interval 0 10))
+;; add-width = 6
+;; mul-width = 10
+;; Thus you see, that the function cannot
+;; just accept the widths of 2 intervals
+
+
+; My original thinking
 (define (interval-width i)
   (/ (- (upper-bound i) (lower-bound i)) 2))
 
