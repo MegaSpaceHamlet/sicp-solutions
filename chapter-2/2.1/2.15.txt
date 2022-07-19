@@ -1,0 +1,16 @@
+The reason it would seem that par2 is better than par1, 
+and in accordance with Eva Lu Ator's note regarding the
+lack of repeating uncertain numbers is as follows:
+
+Every time that "interval arithemtic" is used, the 
+bounds of the sum, or the product, or quotient, begins
+to stretch wider and wider. Or, it gets smaller and 
+smaller. By limiting the amount of interval arithmetic
+with these "uncertain numbers", we are preventing the 
+resulting bounds from exceeding proportions. 
+
+By using the "one" interval, we are limiting that
+possibility, and therefore will be able to produce
+anwers with "tighter error bounds".
+
+
