@@ -1,4 +1,5 @@
 #lang sicp
+(#%require "../../list-functions.rkt")
 (define nums (list 1 2 3 4 5))
 
 ; I was thinking about this answer, but did not implement it before
@@ -10,17 +11,14 @@
 ;       (cons (reverse (cdr items)) (car items))))
 ; Which produced this:
 ; (((((5 . 4) . 3) . 2) . 1)
-(define (old-reverse items)
+(define (mistaken-reverse items)
   (if (null? (cdr items))
       (car items)
-      (cons (old-reverse (cdr items)) (car items))))
-(old-reverse nums)
+      (cons (mistaken-reverse (cdr items)) (car items))))
+(mistaken-reverse nums)
 
-(define (append list1 list2)
-  (if (null? list1)
-      list2
-      (cons (car list1) (append (cdr list1) list2))))
-
+; Correct implementation of the above
+; recursive procedure
 (define (reverse items)
   (if (null? (cdr items))
       items
@@ -28,8 +26,8 @@
 
 (reverse nums)
 
-; Correct answer that I got on my own
-; people are dubbing it the "iterative solution"
+; Another Correct answer that I got on my own
+; the iterative solution
 (define (reverse-b items)
   (define (reverse-aux a b)
     (if (null? a)
