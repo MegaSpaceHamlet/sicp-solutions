@@ -1,4 +1,6 @@
 #lang sicp
+(#%provide (all-defined))
+
 (define (list-ref items n)
   (if (= n 0)
       (car items)
@@ -28,4 +30,9 @@
         b
         (reverse-aux (cdr a) (cons (car a) b))))
   (reverse-aux items nil))
+
+(define (accumulate-list comb base args)
+  (if (null? args)
+      base
+      (accumulate-list comb (comb base (car args)) (cdr args))))
              
