@@ -35,4 +35,15 @@
   (if (null? args)
       base
       (accumulate-list comb (comb base (car args)) (cdr args))))
-             
+
+(define (create-list n)
+  (if (= n 0)
+      nil
+      (cons n (create-list (- n 1)))))
+
+(define (deep-reverse items)
+  (define (do-deep-reverse items result)
+    (cond ((null? items) result)
+          ((pair? (car items)) (do-deep-reverse (cdr items) (cons (do-deep-reverse (car items) nil) result)))
+          (else (do-deep-reverse (cdr items) (cons (car items) result)))))
+  (do-deep-reverse items nil))
