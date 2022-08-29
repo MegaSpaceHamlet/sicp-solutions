@@ -47,3 +47,20 @@
           ((pair? (car items)) (do-deep-reverse (cdr items) (cons (do-deep-reverse (car items) nil) result)))
           (else (do-deep-reverse (cdr items) (cons (car items) result)))))
   (do-deep-reverse items nil))
+
+(define (fringe-cons items)  
+  (define (fringe-iter items result) 
+    (cond ((null? items) result) 
+          ((pair? items) (fringe-iter (car items) (fringe-iter (cdr items) result))) 
+          (else (cons items result)))) 
+  (fringe-iter items nil))
+
+
+(define (tree-map fn tree)
+  (map
+   (lambda (sub-tree)
+     (if (pair? sub-tree)
+         (tree-map fn sub-tree)
+         (fn sub-tree)))
+   tree))
+

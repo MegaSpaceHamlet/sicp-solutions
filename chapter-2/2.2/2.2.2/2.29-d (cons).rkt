@@ -1,23 +1,21 @@
 #lang sicp
 (define (make-mobile left right)
-  (list left right))
+  (cons left right))
 
 (define (left-branch mobile)
   (car mobile))
 
 (define (right-branch mobile)
-  (car (cdr mobile)))
+  (cdr mobile))
 
 (define (make-branch length structure)
-  (list length structure))
+  (cons length structure))
 
 (define (branch-length branch)
   (car branch))
 
 (define (branch-structure branch)
-  (if (null? (cdr (cdr branch)))
-      (car (cdr branch))
-      (cdr branch)))
+  (cdr branch))
 
 (define (total-weight mobile)
   (cond ((not (pair? mobile)) 0)
@@ -68,3 +66,5 @@
             (display (balanced? m))
             (newline))
           (list m0 m1 m2 m3 m4 m5 m6 m7))
+
+                      
