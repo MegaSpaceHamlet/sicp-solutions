@@ -31,10 +31,18 @@
         (reverse-aux (cdr a) (cons (car a) b))))
   (reverse-aux items nil))
 
+; my version before coming across the book's
 (define (accumulate-list comb base args)
   (if (null? args)
       base
       (accumulate-list comb (comb base (car args)) (cdr args))))
+
+; the book's
+(define (accumulate op initial seq)
+  (if (null? seq)
+      initial
+      (op (car seq)
+          (accumulate op initial (cdr seq)))))
 
 (define (create-list n)
   (if (= n 0)
