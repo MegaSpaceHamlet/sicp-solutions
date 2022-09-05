@@ -32,6 +32,8 @@
   (reverse-aux items nil))
 
 ; my version before coming across the book's
+; fold-left without the helper function
+; result is stored in base
 (define (accumulate-list comb base args)
   (if (null? args)
       base
@@ -43,6 +45,20 @@
       initial
       (op (car seq)
           (accumulate op initial (cdr seq)))))
+
+(define (accumulate-n op initial seqs)
+  (if (null? (car seqs))
+      nil
+      (cons (accumulate op initial (map (lambda (s) (car s)) seqs))
+            (accumulate-n op initial (map (lambda (s) (cdr s)) seqs)))))
+
+(define (fold-left op initial sequence)
+  (define (iter result rest)
+    (if (null? rest)
+        result
+        (iter (op result (car rest))
+              (cdr rest))))
+  (iter initial sequence))
 
 (define (create-list n)
   (if (= n 0)
@@ -71,4 +87,6 @@
          (tree-map fn sub-tree)
          (fn sub-tree)))
    tree))
+
+
 
