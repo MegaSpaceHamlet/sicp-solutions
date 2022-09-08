@@ -60,11 +60,6 @@
               (cdr rest))))
   (iter initial sequence))
 
-(define (create-list n)
-  (if (= n 0)
-      nil
-      (cons n (create-list (- n 1)))))
-
 (define (deep-reverse items)
   (define (do-deep-reverse items result)
     (cond ((null? items) result)
@@ -79,7 +74,6 @@
           (else (cons items result)))) 
   (fringe-iter items nil))
 
-
 (define (tree-map fn tree)
   (map
    (lambda (sub-tree)
@@ -88,5 +82,30 @@
          (fn sub-tree)))
    tree))
 
+; my personal helper function to test working with larger lists, where the elements don't matter
+(define (create-list n)
+  (if (= n 0)
+      nil
+      (cons n (create-list (- n 1)))))
 
+(define (enumerate-interval low high)
+  (if (> low high)
+      nil
+      (cons low (enumerate-interval (+ low 1) high))))
+
+; fringe from 2.28
+; apparently, they used the append method
+(define (enumerate-tree tree)
+  (cond ((null? tree) nil)
+        ((not (pair? tree)) (list tree))
+        (else (append (enumerate-tree (car tree))
+                      (enumerate-tree (cdr tree))))))
+
+(define (filter predicate sequence)
+  (cond ((null? sequence) nil)
+        ((predicate (car sequence))
+         (cons (car sequence)
+               (filter predicate (cdr sequence))))
+        (else
+         (filter predicate (cdr sequence)))))
 

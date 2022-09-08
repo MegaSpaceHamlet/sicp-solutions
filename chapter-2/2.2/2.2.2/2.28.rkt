@@ -16,6 +16,10 @@
         (else (append (fringe-original (car x)) (fringe-original (cdr x))))))
 
 ; On community.schemewiki.org, I found what I was looking for.
+; Update: this is the same algorithm (in principle, the order is slightly
+;         different, but that doens't affect the result) used by the authors
+;         later in the chapter. See 2.2.3/sequence-operations.rkt, function
+;         'enumerate-tree'.
 (define (fringe-append x)
   (cond ((null? x) nil)
         ((pair? x) (append (fringe-append (car x)) (fringe-append (cdr x))))
