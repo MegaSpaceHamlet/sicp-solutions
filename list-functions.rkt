@@ -109,3 +109,14 @@
         (else
          (filter predicate (cdr sequence)))))
 
+(define (flatmap proc seq)
+  (accumulate append nil (map proc seq)))
+
+(define (unique-pairs n)
+  (flatmap
+   (lambda (i)
+         (map (lambda (j)
+                (list j i))
+              (enumerate-interval 1 (- i 1))))
+       (enumerate-interval 1 n)))
+
