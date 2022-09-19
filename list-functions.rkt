@@ -120,3 +120,8 @@
               (enumerate-interval 1 (- i 1))))
        (enumerate-interval 1 n)))
 
+(define (in? pair list)
+  (not (null?
+        (filter (lambda (item) (equal? pair item))
+                list))))
+

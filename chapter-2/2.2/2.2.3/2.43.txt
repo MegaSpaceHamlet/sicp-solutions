@@ -1,0 +1,2 @@
+For Louis' procedure, every time 'queens' is called, it calls itself on each rowof the board. That means that the call to queens will take T^n! time. 
+The original procedure is only called n times, according to the number of columns. 
