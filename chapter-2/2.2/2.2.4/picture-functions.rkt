@@ -87,3 +87,19 @@
 (define make-segment cons)
 (define start-segment car)
 (define end-segment cdr)
+
+; these 2 are from the 'transforming and combining painters' section that are not included in the racket sicp-pict library
+
+(define (squish-inwards painter)
+  (transform-painter
+   painter
+   (make-vect 0.0 0.0)
+   (make-vect 0.65 0.35)
+   (make-vect 0.35 0.65)))
+
+(define (shrink-to-upper-right painter)
+  (transform-painter
+   painter
+   (make-vect 0.5 0.5)
+   (make-vect 1.0 0.5)
+   (make-vect 0.5 1.0)))
