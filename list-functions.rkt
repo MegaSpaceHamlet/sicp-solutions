@@ -125,3 +125,17 @@
         (filter (lambda (item) (equal? pair item))
                 list))))
 
+; 2.3.1
+
+(define (memq item x)
+  (cond ((null? x) false)
+        ((eq? item (car x)) x)
+        (else (memq item (cdr x)))))
+
+(define (equal? a b)
+  (cond ((and (null? a) (null? b)) #t)
+        ((and (symbol? a) (symbol? b)) (eq? a b))
+        ((and (number? a) (number? b)) (= a b))
+        ((and (pair? a) (pair? b))
+         (and (equal? (car a) (car b)) (equal? (cdr a) (cdr b))))
+        (else #f)))
