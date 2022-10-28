@@ -14,7 +14,7 @@
 ;          ((product? exp) (make-product (multiplier exp) (multiplicand exp)))
 ;          ((exponentiation? exp) (make-exponent (base exp) (exponent exp))))))
 
-; I found someone who used the same idea, but saved use from all the hard work
+; I found someone who used the same idea, but saved us from all the hard work
 (define (combine s)
   (if (null? (cdddr s))
       (caddr s)

@@ -125,6 +125,10 @@
         (filter (lambda (item) (equal? pair item))
                 list))))
 
+(define (remove item sequence)
+  (filter (lambda (x) (not (= x item)))
+          sequence))
+
 ; 2.3.1
 
 (define (memq item x)
