@@ -46,7 +46,7 @@
   (cond ((or (null? set1) (null? set2)) '())
         ((element-of-set? (car set1) set2) (cons (car set1)
                                                  (intersection-set2 (cdr set1) set2)))
-        (else (intersection-set (cdr set1) set2))))
+        (else (intersection-set2 (cdr set1) set2))))
 
 (define s1 (list 1 1 2 3 2 4 5 4 5 8 8))
 (define s2 (list 4 5 3 6 6 7 8 1 4 9 8))
