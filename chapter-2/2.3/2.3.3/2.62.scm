@@ -1,4 +1,6 @@
 #lang sicp
+(#%provide union-set)
+
 (define (union-set set1 set2)
   (cond ((null? set1) set2)
         ((null? set2) set1)
@@ -11,7 +13,7 @@
 (define s1 (list 1 2 3 4 5))
 (define s2 (list 2 3 4 5 6))
 
-(union-set s1 '())
-(union-set '() s2)
-(union-set s1 s2)
-(union-set s2 s1)
+; (union-set s1 '())
+; (union-set '() s2)
+; (union-set s1 s2)
+; (union-set s2 s1)

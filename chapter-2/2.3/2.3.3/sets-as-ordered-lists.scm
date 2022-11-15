@@ -1,4 +1,6 @@
 #lang sicp
+(#%provide intersection-set)
+
 (define (element-of-set? x set)
   (cond ((null? set) false)
         ((= x (car set)) true)
@@ -20,6 +22,6 @@
 (define s1 (list 1 2 3 4 5))
 (define s2 (list 4 5 6 7 8))
 
-(element-of-set? 3 s1)
-(element-of-set? 8 s2)
-(intersection-set s1 s2)
+; (element-of-set? 3 s1)
+; (element-of-set? 8 s2)
+; (intersection-set s1 s2)
