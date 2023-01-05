@@ -1,6 +1,7 @@
 #lang sicp
 (#%require "huffman-encoding-trees.scm")
 (#%require "2.68.scm")
+(#%provide (all-defined))
 
 (define (generate-huffman-tree pairs)
   (successive-merge (make-leaf-set pairs)))
@@ -15,8 +16,8 @@
   (if (null? (cdr leaf-set))
       (car leaf-set)
       (successive-merge (adjoin-set (make-code-tree
-                                     (car leaf-set)
-                                     (cadr leaf-set))
+                                     (cadr leaf-set)
+                                     (car leaf-set))
                                     (cddr leaf-set)))))
 
 (define pairs (list (list 'A 8)
