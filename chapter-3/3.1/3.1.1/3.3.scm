@@ -1,4 +1,5 @@
 #lang sicp
+(#%provide make-account)
 
 (define (make-account initial password)
   (let ((balance initial))
