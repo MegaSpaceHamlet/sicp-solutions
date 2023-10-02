@@ -10,6 +10,6 @@
   'ok)
 
 (define (logical-or input1 input2)
-  (or
-   (= 1 input1)
-   (= 1 input2)))
+  (if (or (= 1 input1) (= 1 input2))
+      1
+      0))
